@@ -20,8 +20,8 @@ type Props = {
   password: string;
   setPassword: (val: string) => void;
   handleLogin: () => void;
-  hasAccount: boolean;
-  setHasAccount: (val: boolean) => void;
+  // hasAccount: boolean;
+  // setHasAccount: (val: boolean) => void;
   error: string;
 };
 
@@ -29,7 +29,7 @@ const Login: React.FC<Props> = ({
     email, setEmail,
     password, setPassword,
     error, handleLogin,
-    hasAccount, setHasAccount
+    // hasAccount, setHasAccount
 }) => {
     return (
     <>
@@ -37,19 +37,29 @@ const Login: React.FC<Props> = ({
         Login
       </div>
       <div className="Login-input">
+        {/* Email input */}
         <input
         type="email"
-        placeholder='Email' >
-            
-        </input>
+        autoFocus
+        required
+        value={email}
+        placeholder='Email' 
+        onChange={(e) => setEmail(e.target.value)} />
+        {/* Password input */}
         <input
-        type="password" 
-        placeholder='Password'>
-             
-        </input>
-        <p></p>
+        type="password"
+        required 
+        value={password}
+        placeholder='Password'
+        onChange={(e) => setPassword(e.target.value)} />
+
+        <p className="Login-error">{error}</p>
+
         <ThemeProvider theme={theme} >
-            <Button variant="outlined" color='primary' size='large'>
+            <Button variant="outlined" 
+            color='primary' 
+            size='large'
+            onClick={handleLogin} >
             Login
             </Button>
         </ThemeProvider>

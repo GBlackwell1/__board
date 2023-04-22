@@ -24,3 +24,12 @@
   border-bottom: 2px  solid lightgray;
   background-color: transparent;
 }
+
+.Login-error {
+    font-family: inherit;
+    color: red;
+    text-align: left;
+    max-width: 250px;
+    margin-right: auto;
+}
+
