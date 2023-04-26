@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react';
 import './App.css';
 import Login from './Login';
 import Home from './components/Home';
-import firebase from './firebaseConfig';
+import firebase from './firebaseConfig/firebaseConfig';
 
 
 // TODO: Import home 

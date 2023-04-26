@@ -14,5 +14,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);  // <- this is hecka weird too but okay go off ig
-export default firebase;
+
+  firebase.initializeApp(firebaseConfig);  // <- this is hecka weird too but okay go off ig
+
+  export default firebase;
