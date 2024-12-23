@@ -6,3 +6,18 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.draggableParent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100vw;
+  height: 95vh;
+}
+
+.draggableSection {
+  background-color: purple;
+  text-align: center;
+  width: 49%;
+  margin:0.3rem;  
+}
