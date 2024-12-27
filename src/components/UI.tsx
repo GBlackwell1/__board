@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import { Drawer, Button, Paper } from "@mui/material";
 import ListItem from '../widgets/ListItem';
 
@@ -14,7 +14,7 @@ const UI: React.FC = () => {
         __Board
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <ListItem />
+        <ListItem ListItemName='PLACEHOLDER'/>
       </Drawer>
 
     </Paper>

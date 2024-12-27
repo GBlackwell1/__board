@@ -1,9 +1,8 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import UI from './components/UI';
 
 const App: React.FC = () => {  // React.FC <= function component
-  const [open, setOpen] = useState<boolean>(false);
   // TODO: Make a list of all the elements in the board
   // TODO: Make sure the drawer opening is cohesive with the logo __board
   // TODO: Make sure individual elements support click and drag to additional elevations
