@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef} from 'react';
 import {Button, Tooltip} from '@mui/material';
 // FIXME: Rapid and errative dragging causes the item to be lost
 type Props = { ListItemName: string; };
