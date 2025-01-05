@@ -5,6 +5,9 @@ type Props = { ListItemName: string; };
 const ListItem: React.FC<Props> = ({ListItemName}) => { 
     let dragItemRef = useRef<HTMLElement | null>(null);
     // Controls how the item is dragged
+    /* FIXME: Mousemovement should be handled differently, thoughts:
+    - When clicked logged the current item held in a global state file
+    - When release, release that element on the page wherever it was being held */
     const onMouseDrag = (event: MouseEvent) => {
         const { movementX, movementY } = event;
         let computedStyle = window.getComputedStyle(dragItemRef.current as HTMLElement);
@@ -17,7 +20,7 @@ const ListItem: React.FC<Props> = ({ListItemName}) => {
     };
     // Below sets the item to be draggable and non-draggable
     const setClickedItem = () => {
-        dragItemRef.current = document.getElementById(`${ListItemName}-draggable`);
+        dragItemRef.current = document.getElementById(`${ListItemName}-parent`);
         dragItemRef.current?.addEventListener("mousedown", () => {
             dragItemRef.current?.addEventListener("mousemove", onMouseDrag);
         });
@@ -27,12 +30,11 @@ const ListItem: React.FC<Props> = ({ListItemName}) => {
     });
     // TODO: Do some animation that shows dragability to spots on the board
     return ( 
-        <div>
+        <div id={`${ListItemName}-parent`}>
             <Tooltip title="List Item" placement='right'>
                 <Button>ListItem</Button>
             </Tooltip>
             <Button id={`${ListItemName}-draggable`}
-                
                 onPointerDown={setClickedItem}>
                 something
             </Button>

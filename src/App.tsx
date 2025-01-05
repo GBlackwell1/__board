@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const UIOpen = (openClick: boolean) => { setOpen(openClick); };
   /* Thoughts:
   * - Parent object for all widgets, will control API request rate (global settings instead?)
-  * - Unsure of how to h andle drag feature however for future, continuously divide the sections into halves based on the half in which the cursor is hovered in
+  * - Unsure of how to handle drag feature however for future, continuously divide the sections into halves based on the half in which the cursor is hovered in
   */
   return ( 
     <div>
