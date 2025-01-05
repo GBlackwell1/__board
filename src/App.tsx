@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import UI from './components/UI';
+import DropSection from './components/DropSection';
 
 const App: React.FC = () => {
   const drawerWidth: number = 190;
@@ -20,10 +21,10 @@ const App: React.FC = () => {
       <div 
         style={{marginLeft: open ? drawerWidth : 0, transition: 'margin-left 0.2s'}}
         className="draggableParent">
-            <div className="draggableSection">DraggableSection</div>
-            <div className="draggableSection">DraggableSection</div>
-            <div className="draggableSection">DraggableSection</div>
-            <div className="draggableSection">DraggableSection</div>
+            <DropSection id="NW"/>
+            <DropSection id="NE"/>
+            <DropSection id="SW"/>
+            <DropSection id="SE"/>
         </div>
     </div>
   );

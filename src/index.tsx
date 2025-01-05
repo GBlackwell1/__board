@@ -5,16 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-const store = configureStore({reducer: {/*Add reducer logic for movement of draggable elements and other global settings here*/}});
+import rootReducer from './redux/Reducer';
+import { RootState } from './redux/reduxTypes';
+
+const store = configureStore<RootState>({ reducer: rootReducer });
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>
-  </Provider>
+    </Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
