@@ -21,3 +21,8 @@
   width: 49%;
   margin:0.3rem;  
 }
+
+.DraggableListItemParent {
+  display: flex;
+  justify-content: space-between;
+}

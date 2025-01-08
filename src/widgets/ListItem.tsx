@@ -1,9 +1,15 @@
 import React, {useRef} from 'react';
-import {Button, Tooltip} from '@mui/material';
+import {Button, Tooltip } from '@mui/material';
 import { useDispatch } from 'react-redux';
-// FIXME: Rapid and errative dragging causes the item to be lost
-type Props = { ListItemName: string; };
-const ListItem: React.FC<Props> = ({ListItemName}) => { 
+import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
+import '../App.css';
+
+type Props = { 
+    ListItemName: string; 
+    ListItemDescription: string;
+    ListItemSection: string; // Unsure if required at this level 
+ };
+const ListItem: React.FC<Props> = ({ListItemDescription, ListItemName, ListItemSection}) => { 
     let dragItemRef = useRef<HTMLElement | null>(null);
     const dispatch = useDispatch();
     
@@ -15,17 +21,18 @@ const ListItem: React.FC<Props> = ({ListItemName}) => {
     document.addEventListener("mouseup", () => {
         dispatch({type: 'itemSelected/listItemDropped', payload: ListItemName});
     });
-    
+
     // TODO: Do some animation that shows dragability to spots on the board
     return ( 
-        <div id={`${ListItemName}-parent`}>
-            <Tooltip title="List Item" placement='right'>
-                <Button>ListItem</Button>
+        <div className="DraggableListItemParent">
+            <Button>{ListItemName}</Button>
+            <Tooltip title={ListItemDescription} placement='right'>
+                <Button id={`${ListItemName}-draggable`}
+                    onPointerDown={setClickedItem}>
+                    <DragIndicatorOutlinedIcon />
+                </Button>
             </Tooltip>
-            <Button id={`${ListItemName}-draggable`}
-                onPointerDown={setClickedItem}>
-                something
-            </Button>
+            
         </div>
      );
 };

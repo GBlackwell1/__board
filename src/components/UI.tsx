@@ -1,19 +1,26 @@
 import React, {useState } from 'react';
-import { Drawer, Button } from "@mui/material";
+import { Drawer, Button, Divider } from "@mui/material";
 import ListItem from '../widgets/ListItem';
+import ListItems from '../data/ListItems.json';
 
 type UIProps = {openFunc: (open: boolean) => void;};
 
 const UI: React.FC<UIProps> = ({ openFunc }) => {
   const [open, setOpen] = useState<boolean>(false);
-  // TODO: Make a list of all the elements in the board
+  const WorkItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'work');
+  const PersonalItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'personal');
+  const StatisticsItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'statistics');
+  const WorkflowItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'workflow');
+  const APIItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'apis');
+  
+  
+  
   // TODO: Make sure the drawer opening is cohesive with the logo __board
-  // TODO: Make sure individual elements support click and drag to additional elevations
-  // TODO: Partition UI  
   function UIOpen(open: boolean) { 
     setOpen(open);
     openFunc(open);
   }
+  
   return ( 
     <div>
       <Button onClick={() => UIOpen(true)} >
@@ -28,7 +35,66 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
               XBOARD
             </Button>
           </div>
-        <ListItem ListItemName='PLACEHOLDER'/>
+          {/* WORK SECTION */}
+          <Divider />
+          <h4>Work</h4>
+          { 
+            WorkItems.map(listItem => 
+              <ListItem 
+                ListItemName={listItem.ListItemName}
+                ListItemDescription={listItem.ListItemDescription}
+                ListItemSection={listItem.ListItemSection}
+              />
+            )
+          }
+          {/* PERSONAL SECTION */}
+          <Divider />
+          <h4>Personal</h4>
+          { 
+            PersonalItems.map(listItem => 
+              <ListItem 
+                ListItemName={listItem.ListItemName}
+                ListItemDescription={listItem.ListItemDescription}
+                ListItemSection={listItem.ListItemSection}
+              />
+            )
+          }
+          {/* STATISTICS SECTION */}
+          <Divider />
+          <h4>Statistics</h4>
+          { 
+            StatisticsItems.map(listItem => 
+              <ListItem 
+                ListItemName={listItem.ListItemName}
+                ListItemDescription={listItem.ListItemDescription}
+                ListItemSection={listItem.ListItemSection}
+              />
+            )
+          }
+          {/* WORKFLOW SECTION */}
+          <Divider />
+          <h4>Workflow</h4>
+          { 
+            WorkflowItems.map(listItem => 
+              <ListItem 
+                ListItemName={listItem.ListItemName}
+                ListItemDescription={listItem.ListItemDescription}
+                ListItemSection={listItem.ListItemSection}
+              />
+            )
+          }
+          {/* APIS SECTION */}
+          <Divider />
+          <h4>APIs</h4>
+          {
+            APIItems.map(listItem => 
+              <ListItem 
+                ListItemName={listItem.ListItemName}
+                ListItemDescription={listItem.ListItemDescription}
+                ListItemSection={listItem.ListItemSection}
+              />
+            )
+          }
       </Drawer>
     </div>
   );
