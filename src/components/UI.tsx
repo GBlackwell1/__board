@@ -1,9 +1,9 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { Drawer, Button, Divider } from "@mui/material";
 import ListItem from '../widgets/ListItem';
 import ListItems from '../data/ListItems.json';
 
-type UIProps = {openFunc: (open: boolean) => void;};
+type UIProps = {openFunc: (open: boolean) => void};
 
 const UI: React.FC<UIProps> = ({ openFunc }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -12,8 +12,6 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
   const StatisticsItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'statistics');
   const WorkflowItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'workflow');
   const APIItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'apis');
-  
-  
   
   // TODO: Make sure the drawer opening is cohesive with the logo __board
   function UIOpen(open: boolean) { 
@@ -27,6 +25,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
         __Board
       </Button>
       <Drawer 
+        id="drawer"
         open={open} 
         anchor='left'
         variant='persistent'>
@@ -41,6 +40,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
           { 
             WorkItems.map(listItem => 
               <ListItem 
+                key={`${listItem.ListItemName}-${listItem.ListItemSection}`}
                 ListItemName={listItem.ListItemName}
                 ListItemDescription={listItem.ListItemDescription}
                 ListItemSection={listItem.ListItemSection}
@@ -53,6 +53,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
           { 
             PersonalItems.map(listItem => 
               <ListItem 
+                key={`${listItem.ListItemName}-${listItem.ListItemSection}`}
                 ListItemName={listItem.ListItemName}
                 ListItemDescription={listItem.ListItemDescription}
                 ListItemSection={listItem.ListItemSection}
@@ -65,6 +66,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
           { 
             StatisticsItems.map(listItem => 
               <ListItem 
+                key={`${listItem.ListItemName}-${listItem.ListItemSection}`}
                 ListItemName={listItem.ListItemName}
                 ListItemDescription={listItem.ListItemDescription}
                 ListItemSection={listItem.ListItemSection}
@@ -77,6 +79,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
           { 
             WorkflowItems.map(listItem => 
               <ListItem 
+                key={`${listItem.ListItemName}-${listItem.ListItemSection}`}
                 ListItemName={listItem.ListItemName}
                 ListItemDescription={listItem.ListItemDescription}
                 ListItemSection={listItem.ListItemSection}
@@ -89,6 +92,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
           {
             APIItems.map(listItem => 
               <ListItem 
+                key={`${listItem.ListItemName}-${listItem.ListItemSection}`}
                 ListItemName={listItem.ListItemName}
                 ListItemDescription={listItem.ListItemDescription}
                 ListItemSection={listItem.ListItemSection}
