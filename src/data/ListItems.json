@@ -1,10 +1,77 @@
 [
     {
-        "ListItemName": "List Item 1",
-        "ListItemDescription": "Description for List Item 1"
+        "ListItemName": "Weekly Dev Time",
+        "ListItemDescription": "Visualizes software development on a weekly basis.",
+        "ListItemSection": "Work"
     },
     {
-        "ListItemName": "List Item 2",
-        "ListItemDescription": "Description for List Item 2"
+        "ListItemName": "Project Highlight",
+        "ListItemDescription": "Highlights a specific work project.",
+        "ListItemSection": "Work"
+    },
+    {
+        "ListItemName": "Work Items",
+        "ListItemDescription": "A task list of current work items.",
+        "ListItemSection": "Work"
+    },
+    {
+        "ListItemName": "GitHub Issues",
+        "ListItemDescription": "Shows all public open GitHub issues for a user.",
+        "ListItemSection": "Work"
+    },
+    {
+        "ListItemName": "Weekly Personal Time",
+        "ListItemDescription": "Visualizes personal time on a weekly basis.",
+        "ListItemSection": "Personal"
+    },
+    {
+        "ListItemName": "Project Highlight",
+        "ListItemDescription": "Highlights a specific personal project.",
+        "ListItemSection": "Personal"
+    },
+    {
+        "ListItemName": "Work Items",
+        "ListItemDescription": "A task list of current personal work items.",
+        "ListItemSection": "Personal"
+    },
+    {
+        "ListItemName": "Commit Frequency",
+        "ListItemDescription": "Visualizes GitHub commit frequency week on week.",
+        "ListItemSection": "Statistics"
+    },
+    {
+        "ListItemName": "Time Percentages",
+        "ListItemDescription": "Visualizes time across personal and work items.",
+        "ListItemSection": "Statistics"
+    },
+    {
+        "ListItemName": "Last Login",
+        "ListItemDescription": "Shows the last login to __board.",
+        "ListItemSection": "Statistics"
+    },
+    {
+        "ListItemName": "Recent Visitors",
+        "ListItemDescription": "Shows locations of frequent visitors of __board.",
+        "ListItemSection": "Statistics"
+    },
+    {
+        "ListItemName": "Task List",
+        "ListItemDescription": "Shows all open tasks for work.",
+        "ListItemSection": "Workflow"
+    },
+    {
+        "ListItemName": "Local Weather",
+        "ListItemDescription": "Shows the local weather for the user.",
+        "ListItemSection": "APIs"
+    },
+    {
+        "ListItemName": "Minesweeper",
+        "ListItemDescription": "Widget for playing minesweeper.",
+        "ListItemSection": "APIs"
+    },
+    {
+        "ListItemName": "Steam Time",
+        "ListItemDescription": "Shows total Steam time for the week.",
+        "ListItemSection": "APIs"
     }
 ]
