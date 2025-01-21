@@ -54,10 +54,26 @@ const DropSection: React.FC<Props> = ({id}) => {
         }
     }, [mouseEnter, mousePos, itemSelected, topList, bottomList, id]);
 
-    function deleteListItem(widget: string) {
-        if (topList.includes(widget)) setTopList(topList.filter((item) => item !== widget));
-        else if (bottomList.includes(widget)) setBottomList(bottomList.filter((item) => item !== widget));   
+    function swapLists(newTopList: string[], newBottomList: string[]) {
+        setTopList(newTopList);
+        setBottomList(newBottomList);
     }
+    
+    function deleteListItem(widget: string) {
+        let newTopList: string[] = topList;
+        let newBottomList: string[] = bottomList;
+        if (newTopList.includes(widget)) {
+            newTopList = topList.filter((item) => item !== widget);
+            setTopList(newTopList);
+        } else if (newBottomList.includes(widget)) {
+            newBottomList = bottomList.filter((item) => item !== widget);
+            setBottomList(newBottomList);
+        } 
+        
+        if (newTopList.length === 0 && newBottomList.length > 0) 
+            swapLists([...newBottomList], []);
+    }
+
 
     function widgetRender(list: string[], widget: string) {
         return (
