@@ -24,23 +24,16 @@ const DropSection: React.FC<Props> = ({id}) => {
         // Handles dropping of widgets to respective board sections
         function handleMouseUp() {
             if (sectionRef) {
-                let sectionPosition = sectionRef.getBoundingClientRect();            
-                if (mouseEnter && itemSelected && 
-                    !topList.includes(itemSelected) && 
-                    !bottomList.includes(itemSelected))  {
-                    /* If the widget does not exist prior, place it in the right quadrant based on mouse
-                    *  x and y positions. Maximum of 2 widgets per half. */
-                    if (topList.length < 2) {
-                        if ((mousePos.x-sectionPosition.x)-sectionPosition.width/2 < 0) 
-                            setTopList([itemSelected, ...topList]);
-                        else 
-                            setTopList([...topList, itemSelected]);
-                    } else if (bottomList.length < 2 && (mousePos.y-sectionPosition.y)-sectionPosition.height/2 > 0) {
-                        if ((mousePos.x-sectionPosition.x)-sectionPosition.width/2 < 0)
-                            setBottomList([itemSelected, ...bottomList]);
-                        else if ((mousePos.x-sectionPosition.x)-sectionPosition.width/2 > 0)
-                            setBottomList([...bottomList, itemSelected]);
-                    }   
+                let sectionPosition = sectionRef.getBoundingClientRect();
+                if (mouseEnter && itemSelected && !topList.includes(itemSelected) && !bottomList.includes(itemSelected)) {
+                    const isLeft = (mousePos.x - sectionPosition.x) < sectionPosition.width / 2;
+                    const isBottom = (mousePos.y - sectionPosition.y) > sectionPosition.height / 2;
+
+                    if (topList.length < 2 && !isBottom) {
+                        setTopList(isLeft ? [itemSelected, ...topList] : [...topList, itemSelected]);
+                    } else if (bottomList.length < 2 && isBottom) {
+                        setBottomList(isLeft ? [itemSelected, ...bottomList] : [...bottomList, itemSelected]);
+                    }
                 }
             }
         }
@@ -60,20 +53,15 @@ const DropSection: React.FC<Props> = ({id}) => {
     }
     
     function deleteListItem(widget: string) {
-        let newTopList: string[] = topList;
-        let newBottomList: string[] = bottomList;
-        if (newTopList.includes(widget)) {
-            newTopList = topList.filter((item) => item !== widget);
-            setTopList(newTopList);
-        } else if (newBottomList.includes(widget)) {
-            newBottomList = bottomList.filter((item) => item !== widget);
-            setBottomList(newBottomList);
-        } 
-        
-        if (newTopList.length === 0 && newBottomList.length > 0) 
+        const newTopList = topList.filter((item) => item !== widget);
+        const newBottomList = bottomList.filter((item) => item !== widget);
+
+        setTopList(newTopList);
+        setBottomList(newBottomList);
+
+        if (newTopList.length === 0 && newBottomList.length > 0)
             swapLists([...newBottomList], []);
     }
-
 
     function widgetRender(list: string[], widget: string) {
         return (
