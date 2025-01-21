@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import "../App.css";
 import { RootState } from '../redux/reduxTypes';
+import { Button } from '@mui/material';
+import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 
 const selectState = (state: RootState) => state.itemSelected.itemSelected;
 type Props = { id: string; };
@@ -11,7 +13,7 @@ const DropSection: React.FC<Props> = ({id}) => {
     const [mousePos, setMousePos] = useState<{x: number, y: number}>({x: 0, y: 0});
     const itemSelected = useSelector(selectState);
     const [topList, setTopList] = useState<string[]>([]);
-    const [bottomList, setbottomList] = useState<string[]>([]);
+    const [bottomList, setBottomList] = useState<string[]>([]);
 
     useEffect(() => {
         const sectionRef = document?.getElementById(`${id}-section`);
@@ -19,12 +21,15 @@ const DropSection: React.FC<Props> = ({id}) => {
             setMousePos({x: event.clientX, y: event.clientY});
         }   
 
+        // Handles dropping of widgets to respective board sections
         function handleMouseUp() {
             if (sectionRef) {
                 let sectionPosition = sectionRef.getBoundingClientRect();            
                 if (mouseEnter && itemSelected && 
                     !topList.includes(itemSelected) && 
                     !bottomList.includes(itemSelected))  {
+                    /* If the widget does not exist prior, place it in the right quadrant based on mouse
+                    *  x and y positions. Maximum of 2 widgets per half. */
                     if (topList.length < 2) {
                         if ((mousePos.x-sectionPosition.x)-sectionPosition.width/2 < 0) 
                             setTopList([itemSelected, ...topList]);
@@ -32,9 +37,9 @@ const DropSection: React.FC<Props> = ({id}) => {
                             setTopList([...topList, itemSelected]);
                     } else if (bottomList.length < 2 && (mousePos.y-sectionPosition.y)-sectionPosition.height/2 > 0) {
                         if ((mousePos.x-sectionPosition.x)-sectionPosition.width/2 < 0)
-                            setbottomList([itemSelected, ...bottomList]);
+                            setBottomList([itemSelected, ...bottomList]);
                         else if ((mousePos.x-sectionPosition.x)-sectionPosition.width/2 > 0)
-                            setbottomList([...bottomList, itemSelected]);
+                            setBottomList([...bottomList, itemSelected]);
                     }   
                 }
             }
@@ -47,13 +52,22 @@ const DropSection: React.FC<Props> = ({id}) => {
             window.removeEventListener("mousemove", handleMouseMovement);
             sectionRef?.removeEventListener("mouseup", handleMouseUp);
         }
-
     }, [mouseEnter, mousePos, itemSelected, topList, bottomList, id]);
+
+    function deleteListItem(widget: string) {
+        if (topList.includes(widget)) setTopList(topList.filter((item) => item !== widget));
+        else if (bottomList.includes(widget)) setBottomList(bottomList.filter((item) => item !== widget));   
+    }
 
     function widgetRender(list: string[], widget: string) {
         return (
             <div className="topWidgetStyles"
-                            style={(list.length%2 !== 0) ? {flexBasis: "100%"} : {flexBasis: "50%"}}>
+                style={(list.length%2 !== 0) ? {flexBasis: "100%"} : {flexBasis: "50%"}}>
+                <Button
+                    onClick={() => deleteListItem(widget)}
+                >
+                    <DragIndicatorOutlinedIcon />
+                </Button>
                 {widget}
             </div> 
         )
@@ -66,7 +80,7 @@ const DropSection: React.FC<Props> = ({id}) => {
             onMouseEnter={() => {setMouseEnter(true)}}
             onMouseLeave={() => {setMouseEnter(false)}}    
         >
-            <div className='topSection'>
+            <div className='topSection' style={(topList.length > 0) ? {height: "100%"} : {height: "auto"}}>
                 {topList.map((widget) => {
                     return (( topList.length === 0) ? null : widgetRender(topList, widget)) 
                 })}
