@@ -65,7 +65,7 @@ const DropSection: React.FC<Props> = ({id}) => {
 
     function widgetRender(list: string[], widget: string) {
         return (
-            <div className="topWidgetStyles"
+            <div className="widgetStyles"
                 style={(list.length%2 !== 0) ? {flexBasis: "100%"} : {flexBasis: "50%"}}>
                 <Button
                     onClick={() => deleteListItem(widget)}

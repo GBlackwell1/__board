@@ -25,22 +25,18 @@
   justify-content: space-between;
   
   width: 49%;
+  height: 47vh;
+
   margin:0.3rem;  
+  overflow: hidden;
 }
 
-.topWidgetStyles {
+.widgetStyles {
   margin: .5rem;
   background-color: #282c34;
   width: 100%;
-  
+  overflow: hidden;
 }
-
-.bottomWidgetStyles {
-  margin: .5rem;
-  background-color: #282c34;
-  width: 100%;
-}
-
 
 .DraggableListItemParent {
   display: flex;
