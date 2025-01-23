@@ -1,8 +1,9 @@
 import React, {useRef} from 'react';
-import {Button, Tooltip } from '@mui/material';
+import {IconButton, Tooltip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import '../App.css';
+import './ListItem.css';
 
 type Props = { 
     ListItemName: string; 
@@ -25,12 +26,15 @@ const ListItem: React.FC<Props> = ({ListItemDescription, ListItemName, ListItemS
     // TODO: Do some animation that shows dragability to spots on the board
     return ( 
         <div className="DraggableListItemParent">
-            <Button>{ListItemName}</Button>
+            <h5>{ListItemName}</h5>
             <Tooltip title={ListItemDescription} placement='right'>
-                <Button id={`${ListItemName}-draggable`}
-                    onPointerDown={setClickedItem}>
+                <IconButton id={`${ListItemName}-draggable`}
+                    onPointerDown={setClickedItem}
+                    style={{cursor: 'grab', color: 'black'}}
+                    
+                    >
                     <DragIndicatorOutlinedIcon />
-                </Button>
+                </IconButton>
             </Tooltip>
             
         </div>

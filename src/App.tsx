@@ -4,7 +4,7 @@ import UI from './components/UI';
 import DropSection from './components/DropSection';
 
 const App: React.FC = () => {
-  let drawerWidth: number = 264;
+  let drawerWidth: number = 188;
     
   const [open, setOpen] = useState<boolean>(false);
   // TODO: Make sure the drawer opening is cohesive with the logo __board
@@ -19,13 +19,13 @@ const App: React.FC = () => {
       <UI openFunc={UIOpen} />
       <div 
         style={{marginLeft: open ? drawerWidth : 0, transition: 'margin-left 0.24s'}}
-        className="draggableParent"
-        id="">
+        className="draggableParent">
             <DropSection id="NW"/>
             <DropSection id="NE"/>
             <DropSection id="SW"/>
             <DropSection id="SE"/>
         </div>
+        
     </div>
   );
 }

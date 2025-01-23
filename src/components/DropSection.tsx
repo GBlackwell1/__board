@@ -52,6 +52,7 @@ const DropSection: React.FC<Props> = ({id}) => {
         setBottomList(newBottomList);
     }
     
+    // Delete a widget from the list and if necessary swap lists
     function deleteListItem(widget: string) {
         const newTopList = topList.filter((item) => item !== widget);
         const newBottomList = bottomList.filter((item) => item !== widget);
@@ -62,7 +63,7 @@ const DropSection: React.FC<Props> = ({id}) => {
         if (newTopList.length === 0 && newBottomList.length > 0)
             swapLists([...newBottomList], []);
     }
-
+    
     function widgetRender(list: string[], widget: string) {
         return (
             <div className="widgetStyles"
@@ -95,7 +96,6 @@ const DropSection: React.FC<Props> = ({id}) => {
                 })}
             </div>
         </div>
-
     );
 }
 export default DropSection;
