@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Drawer, Button, Divider } from "@mui/material";
 import ListItem from '../widgets/ListItem';
 import ListItems from '../data/ListItems.json';
+import MenuIcon from '@mui/icons-material/Menu';
 import "./UI.css";
 
 type UIProps = {openFunc: (open: boolean) => void};
@@ -23,7 +24,7 @@ const UI: React.FC<UIProps> = ({ openFunc }) => {
   return ( 
     <div id="UI">
       <Button onClick={() => UIOpen(true)} >
-        <p>__Board</p>
+        <MenuIcon />
       </Button>
       <Drawer 
         id="drawer"

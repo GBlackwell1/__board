@@ -1,0 +1,19 @@
+h4 {
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    font-family: 'Open Sans Bold', sans-serif;
+}
+
+#UI {
+    background-color: var(--background);
+}
+
+p {
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    font-family: 'Open Sans Bold', sans-serif;
+    color: var(--header);
+    font-size: large;
+}

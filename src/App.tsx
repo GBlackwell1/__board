@@ -16,16 +16,23 @@ const App: React.FC = () => {
   */
   return ( 
     <div id="toplevel">
-      <UI openFunc={UIOpen} />
+      <div className="UIContainer"
+        style={{width: !open ? drawerWidth : 0}}>
+        <UI openFunc={UIOpen} />
+      </div>
       <div 
-        style={{marginLeft: open ? drawerWidth : 0, transition: 'margin-left 0.24s'}}
-        className="draggableParent">
-            <DropSection id="NW"/>
-            <DropSection id="NE"/>
-            <DropSection id="SW"/>
-            <DropSection id="SE"/>
+        style={{marginLeft: open ? drawerWidth : 0}}
+        className="boardContainer">
+            <div className="boardHeader">
+              <h2>__Board</h2>
+            </div>
+            <div  className="draggableParent">
+              <DropSection id="NW"/>
+              <DropSection id="NE"/>
+              <DropSection id="SW"/>
+              <DropSection id="SE"/>
+            </div>
         </div>
-        
     </div>
   );
 }
