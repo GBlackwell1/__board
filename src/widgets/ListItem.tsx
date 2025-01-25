@@ -23,20 +23,17 @@ const ListItem: React.FC<Props> = ({ListItemDescription, ListItemName, ListItemS
         dispatch({type: 'itemSelected/listItemDropped', payload: ListItemName});
     });
 
-    // TODO: Do some animation that shows dragability to spots on the board
     return ( 
         <div className="DraggableListItemParent">
             <h5>{ListItemName}</h5>
             <Tooltip title={ListItemDescription} placement='right'>
                 <IconButton id={`${ListItemName}-draggable`}
                     onPointerDown={setClickedItem}
-                    style={{cursor: 'grab', color: 'black'}}
-                    
+                    style={{cursor: 'grab', color: 'white'}}
                     >
                     <DragIndicatorOutlinedIcon />
                 </IconButton>
             </Tooltip>
-            
         </div>
      );
 };

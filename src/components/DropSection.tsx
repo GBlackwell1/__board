@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import "../App.css";
 import { RootState } from '../redux/reduxTypes';
-import { Button } from '@mui/material';
-import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
+import WidgetBasis from '../widgets/WidgetBasis';
 
 const selectState = (state: RootState) => state.itemSelected.itemSelected;
 type Props = { id: string; };
@@ -66,15 +65,11 @@ const DropSection: React.FC<Props> = ({id}) => {
     
     function widgetRender(list: string[], widget: string) {
         return (
-            <div className="widgetStyles"
-                style={(list.length%2 !== 0) ? {flexBasis: "100%"} : {flexBasis: "50%"}}>
-                <Button
-                    onClick={() => deleteListItem(widget)}
-                >
-                    <DragIndicatorOutlinedIcon />
-                </Button>
-                {widget}
-            </div> 
+            <WidgetBasis 
+                key={`${widget}-${id}`} 
+                header={widget} 
+                deleteListItem={deleteListItem} 
+            />
         )
     }
 
@@ -83,7 +78,8 @@ const DropSection: React.FC<Props> = ({id}) => {
             className="draggableSection" 
             id={`${id}-section`}
             onMouseEnter={() => {setMouseEnter(true)}}
-            onMouseLeave={() => {setMouseEnter(false)}}    
+            onMouseLeave={() => {setMouseEnter(false)}}
+            style={(topList.length === 0 && bottomList.length === 0) ? {} : {background: "none"}}    
         >
             <div className='topSection' style={(topList.length > 0) ? {height: "100%"} : {height: "auto"}}>
                 {topList.map((widget) => {

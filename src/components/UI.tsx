@@ -1,42 +1,34 @@
-import React, { useState } from 'react';
-import { Drawer, Button, Divider } from "@mui/material";
+import React from 'react';
+import { Drawer, Divider } from "@mui/material";
 import ListItem from '../widgets/ListItem';
 import ListItems from '../data/ListItems.json';
-import MenuIcon from '@mui/icons-material/Menu';
 import "./UI.css";
 
-type UIProps = {openFunc: (open: boolean) => void};
+type UIProps = {
+  open: boolean;
+}
 
-const UI: React.FC<UIProps> = ({ openFunc }) => {
-  const [open, setOpen] = useState<boolean>(false);
+const UI: React.FC<UIProps> = ({open}) => {
   const WorkItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'work');
   const PersonalItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'personal');
   const StatisticsItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'statistics');
   const WorkflowItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'workflow');
   const APIItems = ListItems.filter(listItem => listItem.ListItemSection.toLowerCase() === 'apis');
   
-  // TODO: Make sure the drawer opening is cohesive with the logo __board
-  function UIOpen(open: boolean) { 
-    setOpen(open);
-    openFunc(open);
-  }
-  
   return ( 
-    <div id="UI">
-      <Button onClick={() => UIOpen(true)} >
-        <MenuIcon />
-      </Button>
+    <div id="UI">   
       <Drawer 
         id="drawer"
         open={open} 
         anchor='left'
         variant='persistent'
-        >
-          <div>
-            <Button onClick={() => UIOpen(false)}>
-              XBOARD
-            </Button>
-          </div>
+        PaperProps={{
+          sx: { marginTop: '2%',
+                backgroundColor: 'var(--background)',
+                color: 'var(--header)',
+           }
+        }}
+      >
           {/* WORK SECTION */}
           <Divider />
           <h4>Work</h4>
