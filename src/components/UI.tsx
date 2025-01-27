@@ -1,11 +1,29 @@
 import React from 'react';
-import { Drawer, Divider } from "@mui/material";
+import { Drawer, Divider, DividerProps } from "@mui/material";
 import ListItem from '../widgets/ListItem';
 import ListItems from '../data/ListItems.json';
 import "./UI.css";
 
 type UIProps = {
   open: boolean;
+}
+
+const LocalDivider: React.FC<DividerProps> = ({children}) => {
+  return (
+    <Divider 
+      sx={{ 
+        color: 'var(--header)', 
+        fontWeight: 'bold',  
+        margin: "1em", 
+        '&::before, &::after': {
+          borderColor: 'rgba(255, 255, 255, 0.9)'
+        }
+        }}  
+        textAlign='left' 
+      >
+      {children}
+    </Divider>
+  );
 }
 
 const UI: React.FC<UIProps> = ({open}) => {
@@ -23,15 +41,14 @@ const UI: React.FC<UIProps> = ({open}) => {
         anchor='left'
         variant='persistent'
         PaperProps={{
-          sx: { marginTop: '2%',
+          sx: { marginTop: '2em',
                 backgroundColor: 'var(--background)',
                 color: 'var(--header)',
            }
         }}
       >
           {/* WORK SECTION */}
-          <Divider />
-          <h4>Work</h4>
+          <LocalDivider>WORK</LocalDivider>
           { 
             WorkItems.map(listItem => 
               <ListItem 
@@ -43,8 +60,7 @@ const UI: React.FC<UIProps> = ({open}) => {
             )
           }
           {/* PERSONAL SECTION */}
-          <Divider />
-          <h4>Personal</h4>
+          <LocalDivider>PERSONAL</LocalDivider>
           { 
             PersonalItems.map(listItem => 
               <ListItem 
@@ -56,8 +72,7 @@ const UI: React.FC<UIProps> = ({open}) => {
             )
           }
           {/* STATISTICS SECTION */}
-          <Divider />
-          <h4>Statistics</h4>
+          <LocalDivider>STATISTICS</LocalDivider>
           { 
             StatisticsItems.map(listItem => 
               <ListItem 
@@ -69,8 +84,7 @@ const UI: React.FC<UIProps> = ({open}) => {
             )
           }
           {/* WORKFLOW SECTION */}
-          <Divider />
-          <h4>Workflow</h4>
+          <LocalDivider>WORKFLOW</LocalDivider>
           { 
             WorkflowItems.map(listItem => 
               <ListItem 
@@ -82,8 +96,7 @@ const UI: React.FC<UIProps> = ({open}) => {
             )
           }
           {/* APIS SECTION */}
-          <Divider />
-          <h4>APIs</h4>
+          <LocalDivider>APIS</LocalDivider>
           {
             APIItems.map(listItem => 
               <ListItem 

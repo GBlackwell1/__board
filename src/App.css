@@ -60,7 +60,7 @@
 }
 
 .boardHeader {
-  height: auto;
+  height: 2%;
   color: var(--header);
   font-family: "Open Sans Bold";
   display: flex;

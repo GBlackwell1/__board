@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const App: React.FC = () => {
-  let drawerWidth: number = 188; 
+  let drawerWidth: number = 205; 
   const [open, setOpen] = useState<boolean>(false);
   /* Thoughts:
   * - Parent object for all widgets, will control API request rate (global settings instead?)
