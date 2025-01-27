@@ -41,7 +41,7 @@ const UI: React.FC<UIProps> = ({open}) => {
         anchor='left'
         variant='persistent'
         PaperProps={{
-          sx: { marginTop: '2em',
+          sx: { marginTop: '2.5em',
                 backgroundColor: 'var(--background)',
                 color: 'var(--header)',
            }

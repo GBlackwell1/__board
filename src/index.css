@@ -29,4 +29,12 @@ code {
   --background: #231F20;
   --header: #ffffff;
   --sub-button: #B7B8B9;
+
+  --tag-red: #EF3A42;
+  --tag-orange: #F7941E;
+  --tag-yellow: #FFCD03;
+  --tag-green: #00A65C;
+  --tag-light-green: #A6CE39; 
+  --tag-blue: #0060A9;
+  --tag-purple: #B43C96;
 }
