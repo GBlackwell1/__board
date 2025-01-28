@@ -64,8 +64,14 @@
   color: var(--header);
   font-family: "Open Sans Bold";
   display: flex;
+  justify-content: space-between;
 }
 
 h3 {
   margin: 0.37em;
+}
+
+.boardHeaderLeft {
+  display: flex;
+  justify-content: flex-start;
 }

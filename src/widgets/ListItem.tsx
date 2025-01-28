@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import DragIndicatorOutlinedIcon from '@mui/icons-material/DragIndicatorOutlined';
 import '../App.css';
 import './ListItem.css';
-import { Opacity } from '@mui/icons-material';
 
 type Props = { 
     ListItemName: string; 
