@@ -6,12 +6,15 @@ import { APIRefreshState } from "../reduxTypes";
 // APIRefresh/20
 // APIRefresh/25
 // APIRefresh/30
+
+const APIRefreshRateList: number[] = [10, 15, 20, 25, 30];
+
 const initialState: APIRefreshState = {
     APIRefresh: 15,
 }
 
 // Redux reducer for handling the API refresh rate
-export default function APIRefreshSlice(state = initialState, action: any) {
+function APIRefreshSlice(state = initialState, action: any) {
     switch(action.type) {
         case 'APIRefresh/10':
             return {
@@ -42,3 +45,6 @@ export default function APIRefreshSlice(state = initialState, action: any) {
             return state;
     }
 }
+
+export default APIRefreshSlice;
+export { APIRefreshRateList };

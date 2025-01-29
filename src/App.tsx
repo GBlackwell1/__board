@@ -12,20 +12,14 @@ const App: React.FC = () => {
   let drawerWidth: number = 205; 
   const [open, setOpen] = useState<boolean>(false);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
-  /* Thoughts:
-  * - Parent object for all widgets, will control API request rate (global settings instead?)
-  */
-  const handleAlert = () => {
-    // TODO: Handle the alert dialog and rates via redux
-    setDialogOpen(!dialogOpen);
-  }
+ 
   const getAlertOpen = () => { return dialogOpen; }
 
   return ( 
     <div id="toplevel">
       <InputAlert 
-        title="Refresh" 
-        message="Are you sure you want to refresh the board?" 
+        title="API Refresh Rate" 
+        message="Please choose the refresh rate for __Board API calls" 
         close={() => setDialogOpen(false)} 
         isOpen={getAlertOpen}
       />
@@ -41,7 +35,7 @@ const App: React.FC = () => {
             <IconButton >
               <SaveIcon style={{color: 'white'}}/>
             </IconButton>
-            <IconButton onClick={() => handleAlert()}>
+            <IconButton onClick={() => setDialogOpen(!dialogOpen)}>
               <RefreshIcon style={{color: 'white'}}/>
             </IconButton>
           </div>
