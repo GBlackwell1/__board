@@ -3,6 +3,8 @@ import './App.css';
 import UI from './components/UI';
 import DropSection from './components/DropSection';
 import { IconButton } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState } from './redux/reduxTypes';
 import MenuIcon from '@mui/icons-material/Menu';
 import SaveIcon from '@mui/icons-material/Save';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -12,7 +14,7 @@ const App: React.FC = () => {
   let drawerWidth: number = 205; 
   const [open, setOpen] = useState<boolean>(false);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
- 
+  const selectState = (state: RootState) => state.APIRefresh.APIRefresh;
   const getAlertOpen = () => { return dialogOpen; }
 
   return ( 
@@ -36,6 +38,7 @@ const App: React.FC = () => {
               <SaveIcon style={{color: 'white'}}/>
             </IconButton>
             <IconButton onClick={() => setDialogOpen(!dialogOpen)}>
+              <p>{useSelector(selectState)}</p>
               <RefreshIcon style={{color: 'white'}}/>
             </IconButton>
           </div>
