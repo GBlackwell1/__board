@@ -1,11 +1,11 @@
-.buttonGroupStyles {
+.uploadGroupStyles {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 1em;
 }
 
-.buttonGroupStyles div {
+.uploadGroupStyles div {
     width: 50%;
     height: 10em;
     border: 2px dashed rgba(255, 255, 255, 0.2);

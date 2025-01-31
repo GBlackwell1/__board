@@ -12,13 +12,9 @@ type Props = {
 }
 
 const LoadAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
-    async function handleLoad() {
-        // Open file picker and destructure the result the first handle
-        const [fileHandle] = await (window as any).showOpenFilePicker();
-        const file = await fileHandle.getFile();
-        return file;
-      }
-      
+    function handleLoad() {
+       
+    }
 
     return (
         <Dialog
@@ -34,7 +30,7 @@ const LoadAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
             }}>
             <h2>{title}</h2>
             {message}
-            <div className='buttonGroupStyles'>
+            <div className='uploadGroupStyles'>
                 <div>
                     <Button 
                         style={{width: '100%', height: '100%'}}
