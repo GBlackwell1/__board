@@ -1,53 +1,12 @@
-# Getting Started with Create React App
+# __Board - A Fully Customizable Functional Dashboard
+Built using TypeScript on the React framework. Redux for global state management and Material UI for major UI elements. Done as a solo project to pass the time and to passively understand larger scale web development and TypeScript workflow. Theming of UI elements are heavily inspired by NYC's Subway system. Theming and prototype built using Figma.
+![image](https://github.com/user-attachments/assets/e6133fde-d262-411b-a011-69600eb181ec)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://github.com/user-attachments/assets/6914afae-8325-4942-9785-188a2723c0df)
 
-## Available Scripts
+### Current Development Stage
+A proof of concept has been achieved and I now move onto a MVP design. This would include all major functions (widget placement, button actions, state) with the exception of individual widget development. Functions that are yet to be completed for the MVP stage is as follows:
+#### - Loading __Board save files from user file systems
+The current stage of development can be seen below.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-### Ideas for UI
-
-o View of recently logged in users
-  - Identifier for who slipped
-  - Frequency of login
+![image](https://github.com/user-attachments/assets/8a89897b-0687-4896-9afe-1310f317a379)
