@@ -44,7 +44,7 @@ class SectionObject {
      */    
     AddtoList = (top: boolean, left: boolean, widget: string) => {
         if (!this.topList.includes(widget) && !this.bottomList.includes(widget)) {
-            if (this.topList.length < 2 && top || this.topList.length === 0 && !top) {
+            if ((this.topList.length < 2 && top) || (this.topList.length === 0 && !top)) {
                 this.topList = left ? [widget, ...this.topList] : [...this.topList, widget];
             } else if (this.bottomList.length < 2 && !top) {
                 this.bottomList = left ? [widget, ...this.bottomList] : [...this.bottomList, widget];
@@ -89,7 +89,7 @@ class SectionObject {
         localStorage.setItem('boardObject', JSON.stringify(updatedJSONSection));
     }
 
-    private FromJSON() {
+    private FromJSON = () => {
         const JSONSection: JSON = JSON.parse(localStorage.getItem('boardObject') || '{}');
         let section: MapObject = new Map(Object.entries(JSONSection)).get(this.position);
         return section;
