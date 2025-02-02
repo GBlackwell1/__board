@@ -12,7 +12,7 @@ type Props = {
 
 const SaveAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
     function handleSave() {
-        let JSONObj: JSON = JSON.parse(localStorage.getItem('board') || '{}');
+        let JSONObj: JSON = JSON.parse(localStorage.getItem('boardObject') || '{}');
         const jsonString = JSON.stringify(JSONObj);
         const blob = new Blob([jsonString], { type: 'application/json' });
         // Create a link element to programtically download the file
