@@ -12,8 +12,6 @@ const WidgetBasis: React.FC<Props> = ({header, deleteListItem}) => {
     let listItem = listItems.find((item: any) => item.ListItemName === header);
     let tags = listItem?.Tags;
 
-    console.log(tags);
-
     return (
         <div className="widgetStyles">
             <div className="widgetHeader">

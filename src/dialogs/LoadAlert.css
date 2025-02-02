@@ -1,0 +1,30 @@
+.uploadGroupStyles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.uploadButton {
+    width: 80%;
+    height: 10em;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin: auto; 
+    align-content: center;
+    justify-content: center;
+}
+
+.uploadGroupStyles input {
+    font-family: "Open Sans";
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    justify-content: center;
+}
