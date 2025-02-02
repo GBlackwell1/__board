@@ -1,5 +1,6 @@
 # __Board - A Fully Customizable Functional Dashboard
 Built using TypeScript on the React framework. Redux for global state management and Material UI for major UI elements. Done as a solo project to pass the time and to passively understand larger scale web development and TypeScript workflow. Theming of UI elements are heavily inspired by NYC's Subway system. Theming and prototype built using Figma.
+
 ![image](https://github.com/user-attachments/assets/e6133fde-d262-411b-a011-69600eb181ec)
 
 ![image](https://github.com/user-attachments/assets/6914afae-8325-4942-9785-188a2723c0df)
