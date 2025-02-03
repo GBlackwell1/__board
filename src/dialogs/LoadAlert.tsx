@@ -14,6 +14,7 @@ type Props = {
 
 const LoadAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
     const [file, setFile] = useState<File | null | undefined>(null);
+    const [JSONString, setJSONString] = useState<string>("{}");
 
     const LoadFile = (value: ChangeEvent) => {
         if (value.target) {
@@ -25,17 +26,25 @@ const LoadAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
                 reader.onload = (e) => {
                     try {
                         const JSONData = JSON.parse(e.target?.result as string);
-                        console.log(JSONData);
-                        localStorage.setItem('boardObject', JSON.stringify(JSONData));
+                        setJSONString(JSON.stringify(JSONData));
                         alert('File loaded successfully!');
                     } catch (error) {
                         alert("Error parsing JSON: "+error);
-                        
                     }
                 };
                 reader.readAsText(newFile);
             }
         }
+    }
+
+    const HandleSubmit = () => {
+        if (file !== null) {
+            localStorage.setItem('boardObject', JSONString);
+            window.location.reload()
+        } else {
+            alert("File not loaded!");
+        }
+        
     }
 
     return (
@@ -65,7 +74,7 @@ const LoadAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
                     
                 </div>
                 <div className="buttonContainer">
-                    <Button onClick={() => window.location.reload()}>SUBMIT</Button>
+                    <Button onClick={() => HandleSubmit()}>SUBMIT</Button>
                     <Button onClick={close}>CANCEL</Button>
                 </div>
             </div>
