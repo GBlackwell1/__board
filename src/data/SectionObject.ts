@@ -1,4 +1,7 @@
-type MapObject = {
+
+
+type MapObject = Map<string, MapSection>;
+type MapSection = {
     topList: string[];
     bottomList: string[];
 }
@@ -81,7 +84,7 @@ class SectionObject {
         const storedData: any = localStorage.getItem('boardObject');
         const JSONSection = storedData ? JSON.parse(storedData) : {};
         // Convert the JSON object to a Map object and set
-        let JSONObj: Map<string, object> = new Map(Object.entries(JSONSection));
+        let JSONObj: MapObject = new Map(Object.entries(JSONSection));
         JSONObj.set(this.position, toJSON[this.position]);
         // Serialize
         const updatedJSONSection = Object.fromEntries(JSONObj);
@@ -91,9 +94,10 @@ class SectionObject {
 
     private FromJSON = () => {
         const JSONSection: JSON = JSON.parse(localStorage.getItem('boardObject') || '{}');
-        let section: MapObject = new Map(Object.entries(JSONSection)).get(this.position);
+        let section: MapSection = new Map(Object.entries(JSONSection)).get(this.position);
         return section;
     }
 }
 
 export default SectionObject;
+export type { MapObject, MapSection };

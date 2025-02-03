@@ -4,6 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import './LoadAlert.css';
 import { Button } from '@mui/material';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import { MapObject } from '../data/SectionObject';
 
 type Props = {
     title: string;
@@ -16,18 +17,32 @@ const LoadAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
     const [file, setFile] = useState<File | null | undefined>(null);
     const [JSONString, setJSONString] = useState<string>("{}");
 
+    function expectedFormat(data: any): data is MapObject {
+        for (const [key, value] of data) {
+            if (typeof key !== 'string' || typeof value !== 'object') {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const LoadFile = (value: ChangeEvent) => {
         if (value.target) {
             const newFile: File | null | undefined = (value.target as HTMLInputElement).files?.item(0);
-            setFile(newFile);
-            
             if (newFile) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     try {
-                        const JSONData = JSON.parse(e.target?.result as string);
-                        setJSONString(JSON.stringify(JSONData));
-                        alert('File loaded successfully!');
+                        const JSONData: JSON = JSON.parse(e.target?.result as string);
+                        let FormatData: any = new Map(Object.entries(JSONData));
+                        if (expectedFormat(FormatData)) {
+                            setFile(newFile);
+                            setJSONString(JSON.stringify(JSONData));
+                            alert('File loaded successfully!');
+                        } else {
+                            throw(new Error("JSON is of incorrect format!"));
+                        }
+                        
                     } catch (error) {
                         alert("Error parsing JSON: "+error);
                     }
