@@ -14,7 +14,7 @@ import SaveAlert from './dialogs/SaveAlert';
 import LoadAlert from './dialogs/LoadAlert';
 
 const App: React.FC = () => {
-  let drawerWidth: number = 205; 
+  let drawerWidth: number = 203; 
   const [open, setOpen] = useState<boolean>(false);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [saveOpen, setSaveOpen] = useState<boolean>(false);
@@ -74,7 +74,6 @@ const App: React.FC = () => {
           <DropSection id="SE"/>
         </div>
       </div>
-      
     </div>
   );
 }
