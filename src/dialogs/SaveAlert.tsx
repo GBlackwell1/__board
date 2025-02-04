@@ -22,6 +22,7 @@ const SaveAlert: React.FC<Props> = ({title, message, close, isOpen}) => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        close();
     }
 
     return (

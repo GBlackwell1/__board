@@ -1,6 +1,5 @@
+type MapObject = Map<string, any>;
 
-
-type MapObject = Map<string, MapSection>;
 type MapSection = {
     topList: string[];
     bottomList: string[];
@@ -86,10 +85,12 @@ class SectionObject {
         // Convert the JSON object to a Map object and set
         let JSONObj: MapObject = new Map(Object.entries(JSONSection));
         JSONObj.set(this.position, toJSON[this.position]);
-        // Serialize
+        JSONObj.set("APIRefresh", localStorage.getItem('APIRefresh'));
+        // Serialize3
         const updatedJSONSection = Object.fromEntries(JSONObj);
         // Store
         localStorage.setItem('boardObject', JSON.stringify(updatedJSONSection));
+        console.log(updatedJSONSection);
     }
 
     private FromJSON = () => {
