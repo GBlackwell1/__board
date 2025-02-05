@@ -19,6 +19,28 @@ const LoadAlert: React.FC<Props> = ({ title, message, close, isOpen }) => {
   const [JSONString, setJSONString] = useState<string>("{}");
   const dispatch = useDispatch();
 
+  function ReadFile(newFile: File | null | undefined) {
+    if (newFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const JSONData: JSON = JSON.parse(e.target?.result as string);
+          let FormatData: any = new Map(Object.entries(JSONData));
+          if (expectedFormat(FormatData)) {
+            setFile(newFile);
+            setJSONString(JSON.stringify(JSONData));
+            alert("File loaded successfully!");
+          } else {
+            throw new Error("JSON is of incorrect format!");
+          }
+        } catch (error) {
+          alert("Error parsing JSON: " + error);
+        }
+      }
+      reader.readAsText(newFile);
+    }
+  }
+
   // Verify format of JSON object imported
   function expectedFormat(data: any): data is MapObject {
     for (const [key, value] of data) {
@@ -38,31 +60,28 @@ const LoadAlert: React.FC<Props> = ({ title, message, close, isOpen }) => {
     return true;
   }
 
-  const LoadFile = (value: ChangeEvent) => {
+  function ProcessDropFile(e: React.DragEvent) {
+    // Prevent default behavior
+    e.preventDefault();
+    if (e.dataTransfer.items) {
+      // Make list of items itiratable
+      Array.from(e.dataTransfer.items).forEach((item) => {
+        // Check if item is a file and is of type JSON then convert it to a file
+        if (item.kind === "file" && item.type === "application/json") {
+          const newFile: File | null | undefined = item.getAsFile();
+          ReadFile(newFile);
+        }
+      });
+    }
+  }
+
+  const LoadFile = (value: ChangeEvent<HTMLDivElement>) => {
     if (value.target) {
       const newFile:
         | File
         | null
         | undefined = (value.target as HTMLInputElement).files?.item(0);
-      if (newFile) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const JSONData: JSON = JSON.parse(e.target?.result as string);
-            let FormatData: any = new Map(Object.entries(JSONData));
-            if (expectedFormat(FormatData)) {
-              setFile(newFile);
-              setJSONString(JSON.stringify(JSONData));
-              alert("File loaded successfully!");
-            } else {
-              throw new Error("JSON is of incorrect format!");
-            }
-          } catch (error) {
-            alert("Error parsing JSON: " + error);
-          }
-        };
-        reader.readAsText(newFile);
-      }
+      ReadFile(newFile);
     }
   };
 
@@ -95,8 +114,8 @@ const LoadAlert: React.FC<Props> = ({ title, message, close, isOpen }) => {
     >
       <h2>{title}</h2>
       {message}
-      <div className="uploadGroupStyles">
-        <div className="uploadButton">
+      <div className="uploadGroupStyles" onDrop={(e) => ProcessDropFile(e)} onDragOver={(e) => e.preventDefault()}>
+        <div className="uploadButton" >
           <Button
             style={{ width: "100%", height: "100%" }}
             onClick={() => document.getElementById("fileInput")?.click()}
