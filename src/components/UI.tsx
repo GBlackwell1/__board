@@ -1,6 +1,6 @@
 import React from 'react';
 import { Drawer, Divider, DividerProps } from "@mui/material";
-import ListItem from '../widgets/ListItem';
+import ListItem from '../widgets/basis/ListItem';
 import ListItems from '../data/ListItems.json';
 import "./UI.css";
 

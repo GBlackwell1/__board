@@ -1,3 +1,6 @@
+import React from 'react';
+import { LastLogin } from '../widgets/content/index';
+
 type MapObject = Map<string, any>;
 
 type MapSection = {
@@ -5,11 +8,19 @@ type MapSection = {
     bottomList: string[];
 }
 
+const WidgetMap: Map<string, React.FC> = new Map<string, React.FC>([
+   ["Last Login", LastLogin]
+]);
+
+
 // Purpose: Contains the SectionObject class, which is used to store the widgets in a section of the board.
 class SectionObject {
     topList: string[];
     bottomList: string[];
     position: string;
+
+    // Contains a map of all widgets that can be added to the board and accessed by the user
+    
 
     /**
      * Constructor for BoardObject.
@@ -90,7 +101,6 @@ class SectionObject {
         const updatedJSONSection = Object.fromEntries(JSONObj);
         // Store
         localStorage.setItem('boardObject', JSON.stringify(updatedJSONSection));
-        console.log(updatedJSONSection);
     }
 
     private FromJSON = () => {
@@ -102,3 +112,4 @@ class SectionObject {
 
 export default SectionObject;
 export type { MapObject, MapSection };
+export { WidgetMap };

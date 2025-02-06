@@ -50,7 +50,7 @@ const App: React.FC = () => {
             <IconButton onClick={() => setOpen(!open)} >
               <MenuIcon style={{color: 'white'}}/>
             </IconButton>
-            <h3>__Board</h3>
+            <h3>__board</h3>
           </div>
           <div className="boardHeaderRight">
             <IconButton onClick={() => setLoadOpen(!loadOpen)} > 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import "../App.css";
 import { RootState } from '../redux/reduxTypes';
-import WidgetBasis from '../widgets/WidgetBasis';
+import WidgetBasis from '../widgets/basis/WidgetBasis';
 import SectionObject from '../data/SectionObject';
 
 const selectState = (state: RootState) => state.itemSelected.itemSelected;
