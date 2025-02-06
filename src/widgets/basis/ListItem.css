@@ -1,0 +1,21 @@
+h5 {
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    font-family: 'Open Sans Bold', sans-serif;
+}
+
+.DraggableListItemParent:hover {
+    background-color: var(--sub-button);
+    color: var(--background);
+    transition: background-color 0.1s ease-in-out, 
+                color 0.1s ease-in-out;
+}
+
+.DraggableListItemParent {
+    margin-left: .5em;
+    margin-right: .5em;
+    border-radius: 5px;
+    background-color: none;
+    color: var(--sub-button); 
+}
