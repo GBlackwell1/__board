@@ -6,9 +6,7 @@ Built using TypeScript on the React framework. Redux for global state management
 ![image](https://github.com/user-attachments/assets/6914afae-8325-4942-9785-188a2723c0df)
 
 ### Current Development Stage
-A proof of concept has been achieved and I now move onto a MVP design. This would include all major functions (widget placement, button actions, state) with the exception of individual widget development. Functions that are yet to be completed for the MVP stage is as follows: 
-
-<b>1. Add ability to drag and drop files from file system.</b>
+A proof of concept has been achieved and I now move onto a MVP design. This would include all major functions (widget placement, button actions, state) with the exception of individual widget development. MVP has been fully developed.
 
 The current stage of development can be seen below.
 
