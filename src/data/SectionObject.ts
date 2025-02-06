@@ -1,15 +1,22 @@
 import React from 'react';
-import { LastLogin } from '../widgets/content/index';
+import { LastLogin, WeeklyDevTime } from '../widgets/content/index';
 
 type MapObject = Map<string, any>;
-
 type MapSection = {
     topList: string[];
     bottomList: string[];
 }
 
-const WidgetMap: Map<string, React.FC> = new Map<string, React.FC>([
-   ["Last Login", LastLogin]
+type WidgetOptions = {
+    Widget: React.FC<WidgetProps>,
+    UniqueButton: boolean
+}
+type WidgetProps = {
+    buttonPress: boolean;
+}
+const WidgetMap: Map<string, WidgetOptions> = new Map<string, WidgetOptions>([
+   ["Last Login", { Widget: LastLogin, UniqueButton: false }],
+   ["Weekly Dev Time", { Widget: WeeklyDevTime, UniqueButton: true}]
 ]);
 
 
@@ -111,5 +118,5 @@ class SectionObject {
 }
 
 export default SectionObject;
-export type { MapObject, MapSection };
+export type { MapObject, MapSection, WidgetProps, WidgetOptions };
 export { WidgetMap };
