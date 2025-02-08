@@ -12,8 +12,10 @@ type WidgetOptions = {
     UniqueButton: boolean
 }
 type WidgetProps = {
-    buttonPress: boolean;
+    buttonOpen: boolean;
+    buttonPress: () => void;
 }
+
 const WidgetMap: Map<string, WidgetOptions> = new Map<string, WidgetOptions>([
    ["Last Login", { Widget: LastLogin, UniqueButton: false }],
    ["Weekly Dev Time", { Widget: WeeklyDevTime, UniqueButton: true}]

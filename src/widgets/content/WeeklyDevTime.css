@@ -1,0 +1,10 @@
+.dateListInput {
+    display: flex;
+}
+
+.dateItem {
+    display: flex;
+    flex-direction: column;
+    margin: .5em;
+    justify-content: center;
+}

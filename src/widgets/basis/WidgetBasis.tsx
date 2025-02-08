@@ -54,7 +54,8 @@ const WidgetBasis: React.FC<Props> = ({ header, deleteListItem }) => {
       </div>
       {Widget?.Widget ? (
         <Widget.Widget
-          buttonPress={uniquePress}
+          buttonOpen={uniquePress}
+          buttonPress={() => setUniquePress(false)}
         />
       ) : null}
     </div>
