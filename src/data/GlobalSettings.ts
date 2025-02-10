@@ -16,24 +16,47 @@ type Item = {
 class GlobalSettings {
     projectEndpoint: string = "";
     workItems: Item[] = [];
+    workTime: number[] = [0, 0, 0, 0, 0, 0, 0];
     personalItems: Item[] = [];
+    personalTime: number[] = [0, 0, 0, 0, 0, 0, 0];
     visitorsList: string[] | null = [];
 
-    constructor(endpoint: string, workItems: Item[], personalItems: Item[]) {
+    constructor(endpoint: string = "", workItems: Item[] = [], personalItems: Item[] = []) {
         this.projectEndpoint = endpoint;
         this.workItems = workItems;
         this.personalItems = personalItems;
 
         // TODO: Verify if this actually works, has the potential to be bogus
         let visitors: string | null = localStorage.getItem("visitors");
-        if (visitors) {
-            let visitorsJSON: JSON = JSON.parse(visitors);
-            this.visitorsList = Array.from(Object.keys(visitorsJSON));
-        } 
+        // if (visitors) {
+        //     let visitorsJSON: JSON = JSON.parse(visitors);
+        //     this.visitorsList = Array.from(Object.keys(visitorsJSON));
+        // } 
+
+        let workTime: string | null = localStorage.getItem("workTime");
+        if (workTime) {
+            this.workTime = JSON.parse(workTime);
+        }
+
+        let personalTime: string | null = localStorage.getItem("personalTime");
+        if (personalTime) {
+            this.personalTime = JSON.parse(personalTime);
+        }
     }
 
     set ProjectEndpoint(endpoint: string) {
         this.projectEndpoint = endpoint;
+    }
+
+    set WorkTime(times: number[]) {
+        if (times.length === 7) {
+            this.workTime = times;
+            localStorage.setItem("workTime", JSON.stringify(times));
+        }
+    }
+
+    get WorkTime() {
+        return [...this.workTime];
     }
 }
 

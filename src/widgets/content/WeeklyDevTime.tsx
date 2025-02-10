@@ -1,9 +1,11 @@
 import React from "react";
 import { WidgetProps } from "../../data/SectionObject";
 import { useState } from "react"; 
-import { Dialog, MenuItem } from "@mui/material";
-import Select from '@mui/material/Select';
+import { Button, Dialog, InputLabel, MenuItem } from "@mui/material";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import './WeeklyDevTime.css';
+import GlobalSettings from "../../data/GlobalSettings";
+const globalSettings = new GlobalSettings();
 
 /**
  * Thoughts on how to implement this widget:
@@ -14,11 +16,17 @@ import './WeeklyDevTime.css';
 const WeeklyDevTime: React.FC<WidgetProps> = ({buttonOpen, buttonPress}) => {
     let DateList: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     let HourList: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const [times, setTimes] = useState<number[]>(globalSettings.WorkTime);
+
+    function handleChange(event: SelectChangeEvent, index: number) { 
+        times[index] = parseInt(event.target.value);
+        setTimes([...times]);
+    }
 
     return (
+        <div>
         <Dialog 
             open={buttonOpen} 
-            // onClick={buttonPress}
             PaperProps={{
                 sx: {
                     backgroundColor: 'var(--background)',
@@ -28,22 +36,41 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({buttonOpen, buttonPress}) => {
                 }
             }}
         >
-            <div>Time Entry Alert</div>
+            <h2>Time Entry Alert</h2>
             <div className="dateListInput">
                 {DateList.map((date, index) => {
                     return (
-                        <div className="dateItem" key={index}>
-                            <label>{date}</label>
-                            <Select> 
-                                {HourList.map((hour, index) => {
-                                    return (<MenuItem key={index} value={hour}>{hour}</MenuItem>)
-                                })}
-                            </Select>
-                        </div>
-                    )
+                      <div className="dateItem" key={index}>
+                        <InputLabel id={`${index}-label`} sx={{color: "var(--header)"}}>{date}</InputLabel>
+                        <Select
+                          id= {`${index}-select`}
+                          sx={{
+                            color: "var(--header)",
+                            border: "1px solid rgba(255, 255, 255, 0.23)",
+                            width: "60px",
+                          }}
+                          value={times[index].toString()}
+                          onChange={(event: SelectChangeEvent) => handleChange(event, index)}
+                        >
+                          {HourList.map((hour, index) => {
+                            return (
+                              <MenuItem key={index} value={hour}>
+                                {hour}
+                              </MenuItem>
+                            );
+                          })}
+                        </Select>
+                      </div>
+                    );
                 })}
             </div>
+            <div className="buttonContainer">
+                <Button onClick={() => {globalSettings.WorkTime = times; buttonPress()}}>SUBMIT</Button>
+                <Button onClick={buttonPress}>CANCEL</Button>
+            </div>
         </Dialog>
+        {globalSettings.WorkTime}
+        </div>
     );
 }
 

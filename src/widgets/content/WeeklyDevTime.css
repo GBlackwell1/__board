@@ -1,7 +1,13 @@
 .dateListInput {
     display: flex;
+    font-family: "Open Sans"; 
 }
 
+h2 {
+    font-family: "Open Sans";
+    margin: 0;
+ 
+}
 .dateItem {
     display: flex;
     flex-direction: column;
