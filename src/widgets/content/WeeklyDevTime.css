@@ -14,3 +14,26 @@ h2 {
     margin: .5em;
     justify-content: center;
 }
+
+.timeItem {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 100%;
+}
+
+.timeItem p {
+    margin: 0;
+    font-size: small;
+    margin-bottom: .5em;
+}
+
+.timeItemContainer {
+    display: flex;
+    flex-direction: row;
+    margin: .5vw;
+    justify-content: center;
+}
