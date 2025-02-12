@@ -1,0 +1,10 @@
+.lastLoginContainer {
+    display: flex;
+    justify-content: space-between;
+    height: 30vh;
+    margin-right: 2em;
+}
+.lastLoginDate {
+    width: 50%;
+    display: flex;
+}

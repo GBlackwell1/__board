@@ -28,17 +28,17 @@ const TimeProgress: React.FC<TimeProgressProps> = ({ value, ...props }) => {
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.23)",
     backgroundColor: "var(--background)",
     [`& .${linearProgressClasses.bar}`]: {
-      background: "linear-gradient(135deg, var(--tag-blue) 0%, #ffffff 5%)",
+      background: "linear-gradient(135deg, var(--tag-green) 0%, #ffffff 5%)",
       height: `1000em`, 
     },
   }));
   return <ProgressStyled variant="determinate" {...props} />;
 };
 
-const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
+const WeeklyPersonalTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
   let DateList: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let HourList: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const [times, setTimes] = useState<number[]>(globalSettings.WorkTime);
+  const [times, setTimes] = useState<number[]>(globalSettings.PersonalTime);
 
   function handleChange(event: SelectChangeEvent, index: number) {
     times[index] = parseInt(event.target.value);
@@ -58,7 +58,7 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
           },
         }}
       >
-        <h2>Weekly Development Time</h2>
+        <h2>Weekly Personal Time</h2>
         <div className="dateListInput">
           {DateList.map((date, index) => {
             return (
@@ -96,7 +96,7 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
         <div className="buttonContainer">
           <Button
             onClick={() => {
-              globalSettings.WorkTime = times;
+              globalSettings.PersonalTime = times;
               buttonPress();
             }}
           >
@@ -106,7 +106,7 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
         </div>
       </Dialog>
       <section className="timeItemContainer">
-        {globalSettings.WorkTime.map((time, index) => {
+        {globalSettings.PersonalTime.map((time, index) => {
           return (
             <div key={index} className="timeItem">
               <h3>{DateList[index]}</h3>
@@ -120,4 +120,4 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
   );
 };
 
-export default WeeklyDevTime;
+export default WeeklyPersonalTime;

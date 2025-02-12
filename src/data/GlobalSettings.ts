@@ -27,7 +27,7 @@ class GlobalSettings {
         this.personalItems = personalItems;
 
         // TODO: Verify if this actually works, has the potential to be bogus
-        let visitors: string | null = localStorage.getItem("visitors");
+        // let visitors: string | null = localStorage.getItem("visitors");
         // if (visitors) {
         //     let visitorsJSON: JSON = JSON.parse(visitors);
         //     this.visitorsList = Array.from(Object.keys(visitorsJSON));
@@ -57,6 +57,17 @@ class GlobalSettings {
 
     get WorkTime() {
         return [...this.workTime];
+    }
+
+    set PersonalTime(times: number[]) {
+        if (times.length === 7) {
+            this.personalTime = times;
+            localStorage.setItem("personalTime", JSON.stringify(times));
+        }
+    }
+
+    get PersonalTime() {
+        return [...this.personalTime];
     }
 }
 
