@@ -28,7 +28,7 @@ const TimeProgress: React.FC<TimeProgressProps> = ({ value, ...props }) => {
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.23)",
     backgroundColor: "var(--background)",
     [`& .${linearProgressClasses.bar}`]: {
-      backgroundColor: "var(--tag-blue)",
+      background: "linear-gradient(135deg, var(--tag-blue) 0%, #ffffff 5%)",
       height: `1000em`, 
     },
   }));
