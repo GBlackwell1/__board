@@ -6,8 +6,13 @@
 h2 {
     font-family: "Open Sans";
     margin: 0;
- 
+    font-size: medium;
 }
+
+h3 {
+    font-size: medium;
+}
+
 .dateItem {
     display: flex;
     flex-direction: column;
@@ -18,11 +23,10 @@ h2 {
 .timeItem {
     display: flex;
     flex-direction: column-reverse;
-    justify-content: flex-start;
     align-items: center;
-    margin-left: 3%;
-    margin-right: 3%;
+    flex-grow: 50; /* Increase the flex-grow value */
     width: 100%;
+    align-self: stretch; /* Ensure the item stretches to fill the parent */
 }
 
 .timeItem p {
@@ -33,7 +37,8 @@ h2 {
 
 .timeItemContainer {
     display: flex;
-    flex-direction: row;
-    margin: .5vw;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 100%; /* Ensure the container has a defined height */
+    flex-grow: 1; /* Ensure the container can grow */
 }

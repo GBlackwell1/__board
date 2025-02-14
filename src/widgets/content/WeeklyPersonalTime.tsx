@@ -18,21 +18,22 @@ const globalSettings = new GlobalSettings();
 
 type TimeProgressProps = LinearProgressProps & {
   value: number;
+  times: number[];
 };
 
-const TimeProgress: React.FC<TimeProgressProps> = ({ value, ...props }) => {
+const TimeProgress: React.FC<TimeProgressProps> = ({ times, value, ...props }) => {
   const ProgressStyled = styled(LinearProgress)(() => ({
-    height: `${value/5}em`,
+    height: `${(value/Math.max(...times))*100}%`,
     borderRadius: "10px 10px 1px 1px",
-    width: '1em',
+    width: '20%',
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.23)",
     backgroundColor: "var(--background)",
     [`& .${linearProgressClasses.bar}`]: {
       background: "linear-gradient(135deg, var(--tag-green) 0%, #ffffff 5%)",
-      height: `1000em`, 
+      height: `10000em`, 
     },
   }));
-  return <ProgressStyled variant="determinate" {...props} />;
+  return <ProgressStyled variant="determinate" value={100} {...props} />;
 };
 
 const WeeklyPersonalTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
@@ -46,7 +47,7 @@ const WeeklyPersonalTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) 
   }
 
   return (
-    <div>
+    <div style={{height: '75%'}}>
       <Dialog
         open={buttonOpen}
         PaperProps={{
@@ -110,7 +111,7 @@ const WeeklyPersonalTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) 
           return (
             <div key={index} className="timeItem">
               <h3>{DateList[index]}</h3>
-              <TimeProgress value={(time / 24) * 100} />
+              <TimeProgress times={times} value={time} />
               <p>{time}hr</p>
             </div>
           );
