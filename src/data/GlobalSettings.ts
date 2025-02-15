@@ -50,8 +50,8 @@ class GlobalSettings {
 
     set WorkTime(times: number[]) {
         if (times.length === 7) {
-            this.workTime = times;
-            localStorage.setItem("workTime", JSON.stringify(times));
+            this.workTime = [...times];
+            localStorage.setItem("workTime", JSON.stringify(this.workTime));
         }
     }
 
@@ -61,8 +61,8 @@ class GlobalSettings {
 
     set PersonalTime(times: number[]) {
         if (times.length === 7) {
-            this.personalTime = times;
-            localStorage.setItem("personalTime", JSON.stringify(times));
+            this.personalTime = [...times];
+            localStorage.setItem("personalTime", JSON.stringify(this.personalTime));
         }
     }
 
