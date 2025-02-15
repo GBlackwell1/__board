@@ -47,7 +47,7 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
   }
 
   return (
-    <div style={{height: '75%'}}>
+    <div style={{height: '55%'}}>
       <Dialog
         open={buttonOpen}
         PaperProps={{
