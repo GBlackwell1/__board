@@ -10,5 +10,6 @@ A proof of concept has been achieved and I now move onto a MVP design. This woul
 
 The current stage of development can be seen below.
 
-<img width="1511" alt="image" src="https://github.com/user-attachments/assets/8290fe94-6c11-4816-855c-70da41155da1" />
+<img width="1509" alt="image" src="https://github.com/user-attachments/assets/d727196c-839c-4a6c-a686-b06508544328" />
+
 
