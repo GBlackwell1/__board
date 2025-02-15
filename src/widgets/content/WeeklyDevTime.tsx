@@ -23,7 +23,7 @@ type TimeProgressProps = LinearProgressProps & {
 
 const TimeProgress: React.FC<TimeProgressProps> = ({ times, value, ...props }) => {
   const ProgressStyled = styled(LinearProgress)(() => ({
-    height: `${(value/Math.max(...times))*50}%`,
+    height: `${(value/Math.max(...times))*100}%`,
     borderRadius: "10px 10px 1px 1px",
     width: '20%',
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.23)",
@@ -47,7 +47,7 @@ const WeeklyDevTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) => {
   }
 
   return (
-    <div style={{height: '55%'}}>
+    <div style={{ height: "100%", marginBottom: "1em" }}>
       <Dialog
         open={buttonOpen}
         PaperProps={{

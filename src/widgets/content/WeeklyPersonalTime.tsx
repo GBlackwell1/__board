@@ -47,7 +47,7 @@ const WeeklyPersonalTime: React.FC<WidgetProps> = ({ buttonOpen, buttonPress }) 
   }
 
   return (
-    <div style={{height: '55%'}}>
+    <div style={{height: '100%', marginBottom: '1em'}}>
       <Dialog
         open={buttonOpen}
         PaperProps={{

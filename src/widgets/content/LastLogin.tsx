@@ -18,35 +18,15 @@ const DateContainer: React.FC<{
       }}
     >
       <div
-        style={{
-          ...style1,
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: ".5em",
-          borderRadius: "10px 10px 0 0",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.23)",
-          fontFamily: "Open Sans Bold",
-          fontSize: "1.5em",
-        }}
+       className="dateContainers"
+        style={style1}
       >
         <p>{loginString1}</p>
         <p style={{margin: ".35em 0 0 .5em", padding: "0", fontSize: ".5em"}}>{subheader1}</p>
       </div>
       <div
-        style={{
-          ...style2,
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: ".5em",
-          borderRadius: "0 0 10px 10px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.23)",
-          fontFamily: "Open Sans Bold",
-          fontSize: "1.5em",
-        }}
+        className="dateContainers"
+        style={style2}
       >
         <p>{loginString2}</p>
         <p style={{margin: ".35em 0 0 .5em", padding: "0", fontSize: ".5em"}}>{subheader2}</p>
@@ -72,7 +52,7 @@ const LastLogin: React.FC = () => {
     : null;
 
   return (
-    <div>
+    <div style={{ height: "100%", marginBottom: "1em" }}>
       <section className="lastLoginContainer">
         <div className="lastLoginDate">
           <DateContainer
