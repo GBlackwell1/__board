@@ -1,5 +1,5 @@
 import React from 'react';
-import { LastLogin, WeeklyDevTime, WeeklyPersonalTime } from '../widgets/content/index';
+import { LastLogin, WeeklyDevTime, WeeklyPersonalTime, TimePercentages} from '../widgets/content/index';
 
 type MapObject = Map<string, any>;
 type MapSection = {
@@ -20,6 +20,7 @@ const WidgetMap: Map<string, WidgetOptions> = new Map<string, WidgetOptions>([
    ["Last Login", { Widget: LastLogin, UniqueButton: false }],
    ["Weekly Dev Time", { Widget: WeeklyDevTime, UniqueButton: true}],
    ["Weekly Personal Time", { Widget: WeeklyPersonalTime, UniqueButton: true}],
+   ["Time Percentages", { Widget: TimePercentages, UniqueButton: false}],
 ]);
 
 

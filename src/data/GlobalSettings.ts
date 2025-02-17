@@ -11,14 +11,12 @@ type Item = {
     description: string;
     section: string;
 }
-
-
 class GlobalSettings {
     projectEndpoint: string = "";
     workItems: Item[] = [];
-    workTime: number[] = [0, 0, 0, 0, 0, 0, 0];
+    static workTime: number[] = [0, 0, 0, 0, 0, 0, 0];
     personalItems: Item[] = [];
-    personalTime: number[] = [0, 0, 0, 0, 0, 0, 0];
+    static personalTime: number[] = [0, 0, 0, 0, 0, 0, 0];
     visitorsList: string[] | null = [];
 
     constructor(endpoint: string = "", workItems: Item[] = [], personalItems: Item[] = []) {
@@ -35,12 +33,12 @@ class GlobalSettings {
 
         let workTime: string | null = localStorage.getItem("workTime");
         if (workTime) {
-            this.workTime = JSON.parse(workTime);
+            GlobalSettings.workTime = JSON.parse(workTime);
         }
 
         let personalTime: string | null = localStorage.getItem("personalTime");
         if (personalTime) {
-            this.personalTime = JSON.parse(personalTime);
+            GlobalSettings.personalTime = JSON.parse(personalTime);
         }
     }
 
@@ -50,24 +48,24 @@ class GlobalSettings {
 
     set WorkTime(times: number[]) {
         if (times.length === 7) {
-            this.workTime = [...times];
-            localStorage.setItem("workTime", JSON.stringify(this.workTime));
+            GlobalSettings.workTime = [...times];
+            localStorage.setItem("workTime", JSON.stringify(GlobalSettings.workTime));
         }
     }
 
     get WorkTime() {
-        return [...this.workTime];
+        return [...GlobalSettings.workTime];
     }
 
     set PersonalTime(times: number[]) {
         if (times.length === 7) {
-            this.personalTime = [...times];
-            localStorage.setItem("personalTime", JSON.stringify(this.personalTime));
+            GlobalSettings.personalTime = [...times];
+            localStorage.setItem("personalTime", JSON.stringify(GlobalSettings.personalTime));
         }
     }
 
     get PersonalTime() {
-        return [...this.personalTime];
+        return [...GlobalSettings.personalTime];
     }
 }
 

@@ -1,0 +1,8 @@
+.timePercentages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.timePercentages p {
+    margin: .5em;
+}
